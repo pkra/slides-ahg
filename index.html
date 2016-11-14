@@ -14,7 +14,7 @@
 	</header>
 	<section class="slide">
 		<h2>Authoring with accessible web documents in mind.</h2>
-			<img style="width:40%" src="https://upload.wikimedia.org/wikipedia/commons/f/f6/Disability_symbols.svg" alt="">
+			<img style="width:40%" src="https://upload.wikimedia.org/wikipedia/commons/f/f6/Disability_symbols.svg" alt="icons for four types of impairments: motor, cognition, hearing, and vision.">
 	</section>
 	<section class="slide">
 		<h2>The case for web documents.</h2>
@@ -23,17 +23,26 @@
 			<li>Most flexible.</li>
 			<li>Most sustainable.</li>
 		</ul>
-		<!-- <p class="note">Echo Park 8-bit sustainable umami deep v Kickstarter.</p> -->
+		<footer class="footer"><ul>
+			<li>HTML: <a href="http://w3c.github.io/aria-in-html/#rule1">Accessible by default</a>; you break it, nobody else</li>
+			<li>Browers: a powerful &amp; <a href="https://www.statista.com/statistics/273018/number-of-internet-users-worldwide/">universal</a> platform</li>
+			<li>Robust: good web documents age well, e.g., <a href="http://info.cern.ch/hypertext/WWW/TheProject.html">the first page</a></li>
+		</ul></footer>
 	</section>
 	<section class="slide">
 		<h2>Do one thing and do it well</h2>
 		<ul>
-			<li>Word</li>
-			<li>LaTeX</li>
-			<li>Markdown</li>
+			<li>Word etc.</li>
+			<li>LaTeX etc.</li>
+			<li>Markdown etc.</li>
 		</ul>
-		<p>It doesn't matter which as long as you do a good job with it.</p>
-		<!-- <footer class="footer">	</footer> -->
+		<p><strong>It doesn't matter which as long as you do a good job with it.</strong></p>
+		<footer class="footer">
+			<ul>
+				<li>MS Word: <a href="https://support.office.com/en-us/article/Make-your-Word-documents-accessible-d9bf3683-87ac-47ea-b91a-78dcacb3c66d">Microsoft tips</a> <a href="http://webaim.org/techniques/word/">WebAIM tips</a></li>
+				<li>LaTeX: as few packages as possible, no hacks etc.</li>
+			</ul>
+		</footer>
 	</section>
 	<section class="slide">
 		<h2>Keep it simple, stupid.</h2>
@@ -42,21 +51,73 @@
 			<li>Simple layout -- do less, get more </li>
 			<li>Convert early, convert often</li>
 		</ul>
+		<footer class="footer">
+		<ul>
+			<li>e.g., MS Word: prefer Word's built-in <a href="https://support.office.com/en-us/article/Write-insert-or-change-an-equation-1d01cabc-ceb1-458d-bc70-7f9737722702">Math authoring</a> rather than external tools.</li>
+			<li>e.g., LaTeX: don't use tabular environments  or add manual breaks just to manipulate minutiae of a PDF page, don't use "fancy" packages like <code>fancyhdr</code></li>
+			<li>switch things around: take intervals where you only work with HTML output, don't even look at print output</li>
+		</ul>
+	</footer>
 	</section>
 	<section class="slide">
 		<h2>Get from here to there</h2>
 		<ol>
-			<li>Word => pandoc </li>
-			<li>LaTeX => pandoc,latexml, tex4ht (don't), plastex, tralics </li>
-			<li>Markdown => gazillion tools for web, also pandoc (e.g., to Word, LaTeX), also writage (Word plugin)</li>
-			<li></li>
+			<li>Word => <a href="http://pandoc.org/">pandoc</a> </li>
+			<li>LaTeX => <a href="http://pandoc.org/">pandoc</a>, <a href="http://dlmf.nist.gov/LaTeXML/">latexml</a> (also: <a href="https://www.ctan.org/pkg/tex4ht">tex4ht</a>, <a href="https://www.ctan.org/pkg/tex4ht?lang=en">plastex</a>, <a href="http://www-sop.inria.fr/marelle/tralics/">tralics</a>)</li>
+			<li>Markdown => <a href="https://en.wikipedia.org/wiki/Markdown#Implementations">dozens</a>, e.g., <a href="http://pandoc.org/">pandoc</a>, <a href="http://www.writage.com/">Writage (MS Word plugin)</a></li>
 		</ol>
+		<footer class="footer">
+			<ul>
+				<li>Libre Office: (don't) try the HTML export, e.g., with <a href="https://encrypted.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwi41rK-0qjQAhVD1hQKHS6xCYgQFggaMAA&url=https%3A%2F%2Fwiki.documentfoundation.org%2Fimages%2F4%2F42%2FMG40-MathGuide.odt&usg=AFQjCNF1EhvGEphB0X4rMU7y5zzOFPGHEA&bvm=bv.138493631,d.d24&cad=rja">LibreOffice Math Guide</a> -- tag soup trying to preserve all layout, inlined images etc</li>
+				<li>LaTeX (others)
+					<ul>
+						<li>tex4ht <a href="http://www.csun.edu/~hcmth008/mathml/acc_tutorial.pdf">tex4ht tutorial</a></li>
+						<li>For PDF (untested): <a href="https://www.ctan.org/pkg/accsupp">accsup</a>, <a href="http://ctan.org/pkg/pdfx">pdfx</a></li>
+					</ul></li>
+			</ul>
+		</footer>
+	</section>
+	<section class="slide">
+		<h2>Getting started with Pandoc</h2>
+		<ul>
+			<li><a href="http://pandoc.org/try/">Web demo</a></li>
+			<li>Simple <a href="http://pandoc.org/demos.html">example usage</a>:: <code>pandoc --self-contained -s example.docx -t html -o example.html</code>.</li>
+			<li>Complex example: <code>pandoc -s -S --toc -c pandoc.css -A footer.html example.tex -o example.html</code>
+		</ul>
+	</section>
+	<section class="slide">
+		<h2>Getting started with latexml</h2>
+		<p>
+			Jump in: <code>latexml doc.tex | latexmlpost --dest=doc.html</code>
+		</p>
+		<ul>
+			<li><a href="http://latexml.mathweb.org/editor">Web demo</a></li>
+			<li><a href="http://dlmf.nist.gov/LaTeXML/examples.html">Examples</a></li>
+			<li><a href="http://dlmf.nist.gov/LaTeXML/manual/">Manual</a></li>
+			<li>Advanced: <a href="https://github.com/angerhang/mockDoc/blob/master/howTo/howTo.pdf">authoring a "binding"(package)</a></li>
+		</ul>
+	</section>
+	<section class="slide">
+		<h2>Getting started with Markdown</h2>
+		<p style="background-color: rgb(219, 239, 220);">
+			<code>
+					# I'm a top-level heading <br>
+					I'm a paragraph followed by a list. <br>
+					* item 1 <br>
+					* item 2 <br>
+					![alt text](link/to/image)
+			</code>
+		</p>
+		<ul>
+			<li>Quick start: <a href="https://stackedit.io/">StackEdit (web-based editor)</a></li>
+			<li><a href="https://encrypted.google.com/search?hl=en&q=best%20markdown%20editor#hl=en&q=markdown+editor">Google "markdown editor" (460,000 hits)</a></li>
+		</ul>
 	</section>
 	<section class="slide">
 		<h2>Checking results</h2>
 		<ol>
-			<li>Learn to use a screenreader (NVDA, VO, Orca)</li>
-			<li>Learn automated tools (aXe, ChromeLens, tota11y) and their limitations.</li>
+			<li>Learn to use a screenreader (<a href="http://www.nvaccess.org/">NVDA</a>, <a href="http://www.apple.com/accessibility/mac/vision/">VoiceOver</a>, <a href="https://wiki.gnome.org/Projects/Orca">Orca</a>)</li>
+			<li>Learn automated tools (<a href="https://khan.github.io/tota11y/">tota11y</a>, <a href="https://chrome.google.com/webstore/detail/axe/lhdoppojpmngadmnindnejefpokejbdd">aXe</a>, <a href="https://chrome.google.com/webstore/detail/chromelens/idikgljglpfilbhaboonnpnnincjhjkd">ChromeLens</a>) and their limitations.</li>
 		</ol>
 	</section>
 	<section class="slide">
